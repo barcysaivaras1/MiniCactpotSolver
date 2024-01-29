@@ -15,14 +15,14 @@ class GridCreatorTest {
          //   "100,234,000"
     void gridInsert(String row1, String row2, String row3,String[] expected) {
         GridCreator gc = new GridCreator();
-        String[] grid = gc.gridInsert(row1,row2,row3);
-        Assert.assertArrayEquals(expected,grid);
+        gc.gridInsert(row1,row2,row3);
+        Assert.assertArrayEquals(expected,gc.grid);
     }
     private static Stream<Arguments> gridInsertTestVals(){
         return Stream.of(
                 //TESTS SHOULD BE SUCCESSFUL
                 Arguments.of("100","002","004",new String[]{"100","002","004"}),
-                Arguments.of("002","000","000",new String[]{"100","002","004"}),
+                Arguments.of("002","000","000",new String[]{"002","000","000"}),
 
                 //TESTS SHOULD FAIL
                 Arguments.of("100","002","4",new String[]{"100","002","4"}),
