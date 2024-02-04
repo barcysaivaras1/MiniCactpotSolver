@@ -30,7 +30,30 @@ class GridCreatorTest {
 
                 //INVALID INPUT HANDLING
                         Arguments.of("100","002","4",new String[]{}),
-                        Arguments.of("100","002","JPG",new String[]{})
+                        Arguments.of("100","002","JPG",new String[]{}),
+                //DUPLICATE NUMBERS SHOULD NOT BE ALLOWED
+                        Arguments.of("100","002","002",new String[]{}),
+                        Arguments.of("100","002","112",new String[]{})
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("Checks if there are duplicate digits between rows and in rows")
+    @MethodSource("duplicateCheckTestVals")
+    void duplicateCheck(String row1, String row2, String row3,boolean expected) {
+        GridCreator gc = new GridCreator();
+        boolean duplicate = gc.duplicateCheck(row1,row2,row3);
+        Assert.assertTrue(expected == duplicate);
+    }
+
+    private static Stream<Arguments> duplicateCheckTestVals() {
+        return Stream.of(
+                //True means there are duplicates within the rows
+                Arguments.of("100","002","002",true),
+                Arguments.of("100","002","112",true),
+                //False means there are no duplicates within the rows
+                Arguments.of("100","002","000",false),
+                Arguments.of("123","456","789",false)
         );
     }
 }

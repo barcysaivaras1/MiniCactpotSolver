@@ -55,6 +55,9 @@ public class GridCreator {
 
         }
     }
+    public boolean duplicateCheck(String row1,String row2, String row3){
+        return false;
+    }
 
 
 }
