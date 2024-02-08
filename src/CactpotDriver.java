@@ -1,6 +1,6 @@
 public class CactpotDriver {
     public static void main(String[] args) {
-        GridCreator gc = new GridCreator();
+        Grid gc = new Grid();
         gc.inputRows();
         gc.printGrid();
     }

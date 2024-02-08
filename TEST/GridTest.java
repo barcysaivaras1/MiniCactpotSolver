@@ -1,23 +1,18 @@
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.Scanner;
 import java.util.stream.Stream;
 
-class GridCreatorTest {
+class GridTest {
     @ParameterizedTest
     @DisplayName("Checks if a valid grid is stored. Invalid Grids are denied")
     @MethodSource("gridInsertTestVals")
     void gridInsert(String row1, String row2, String row3,String[] expected) {
-        GridCreator gc = new GridCreator();
+        Grid gc = new Grid();
         gc.gridInsert(row1,row2,row3);
         System.out.println(gc.grid);
         Assert.assertArrayEquals(expected,gc.grid);
@@ -41,7 +36,7 @@ class GridCreatorTest {
     @DisplayName("Checks if there are duplicate digits between rows and in rows")
     @MethodSource("duplicateCheckTestVals")
     void duplicateCheck(String row1, String row2, String row3,boolean expected) {
-        GridCreator gc = new GridCreator();
+        Grid gc = new Grid();
         boolean duplicate = gc.duplicateCheck(row1,row2,row3);
         Assert.assertTrue(expected == duplicate);
     }
@@ -56,4 +51,19 @@ class GridCreatorTest {
                 Arguments.of("123","456","789",false)
         );
     }
+
+    @ParameterizedTest
+    @DisplayName("Testing if average score calculated correctly")
+    @CsvSource({
+            "001 , 528",
+            "146 , 252",
+            "000 , 332",
+            "312 , 10000",
+            "302 , 1761"
+    })
+    void rowAverageTest(String line ,int expected) {
+        int avgScore = Grid.rowAverage(line);
+        Assert.assertEquals(avgScore,expected);
+    }
+
 }

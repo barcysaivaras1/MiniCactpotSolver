@@ -1,14 +1,13 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
-public class GridCreator {
+public class Grid {
     String[] grid;
 
     //Use array list so that i can search and remove values with ease
     ArrayList<Character> available_digits;
-    public GridCreator() {
+    public Grid() {
         this.grid = new String[]{};
         this.available_digits = new ArrayList<>(Arrays.asList('1','2','3','4','5','6','7','8','9'));
     }
@@ -75,6 +74,10 @@ public class GridCreator {
             }
         }
         return false;
+    }
+
+    public static int rowAverage(String row){
+        return 0;
     }
 
 
