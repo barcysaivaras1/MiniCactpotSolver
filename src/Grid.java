@@ -77,6 +77,21 @@ public class Grid {
     }
 
     public static int rowAverage(String row){
+        int int_row = Integer.parseInt(row);
+        int total = 0;
+        // NOTE TO SELF
+        // You to calculate the number of possible permutations with no replacements of digits
+        // You need to be able to carry out the score of every possible permutation and add it to the total
+        // Total needs to be divided by the number of permutations
+        int counter = 0;
+        for(int i=0;i<row.length();i++){
+            char digit = row.charAt(i);
+            if(digit == '0'){
+                counter+=1;
+            }
+        }
+        //Need factorial method to calculate
+        int permutations;
         return 0;
     }
 
