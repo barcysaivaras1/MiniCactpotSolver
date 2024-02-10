@@ -1,10 +1,13 @@
 import org.junit.Assert;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Stream;
 
 class GridTest {
@@ -62,8 +65,36 @@ class GridTest {
             "302 , 1761"
     })
     void rowAverageTest(String line ,int expected) {
-        int avgScore = Grid.rowAverage(line);
+        Grid gc = new Grid();
+        int avgScore = gc.rowAverage(line);
         Assert.assertEquals(avgScore,expected);
     }
 
+    @ParameterizedTest
+    @DisplayName("Testing method that creates the number of possible permutations of each digit")
+    @MethodSource("permutationMapTestVals")
+    void permutationMapTest(Grid gc,String num, Map<Integer,Integer> expected) {
+        Map<Integer,Integer> map = gc.permutationMap();
+        Assert.assertEquals(map,expected);
+    }
+
+    private static Stream<Arguments> permutationMapTestVals() {
+        Grid gc1 = new Grid();
+        Grid gc2 = new Grid();
+        gc2.gridInsert("000","100","240");
+        Map<Integer, Integer> ans = gc2.mapBuild();
+        ans.put(7,1);
+        ans.put(8,1);
+        ans.put(9,1);
+        ans.put(10,1);
+        ans.put(11,1);
+        ans.put(12,1);
+        ans.put(13,1);
+        ans.put(14,1);
+        ans.put(15,1);
+        return Stream.of(
+                //More Tests to be added
+                Arguments.of(gc2,"240",ans)
+        );
+    }
 }

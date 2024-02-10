@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Grid {
     String[] grid;
@@ -76,7 +74,7 @@ public class Grid {
         return false;
     }
 
-    public static int rowAverage(String row){
+    public int rowAverage(String row){
         int int_row = Integer.parseInt(row);
         int total = 0;
         // NOTE TO SELF
@@ -91,9 +89,43 @@ public class Grid {
             }
         }
         //Need factorial method to calculate
-        int permutations;
+        int permutations = Maths.factorial(this.available_digits.size()) / Maths.factorial(this.available_digits.size()-counter);
+
         return 0;
     }
 
+    public Map<Integer, Integer> permutationMap(){
+        Map<Integer, Integer> num_of_digits = mapBuild();
+        //This needs to create a hash map with the number of times a digit can be created with the
+        // Available values, I have test, base my code to succeed in that test.
+
+
+        return num_of_digits;
+
+    }
+
+    public Map<Integer,Integer> mapBuild(){
+        Map<Integer, Integer> num_of_digits = new HashMap<Integer,Integer>();
+        num_of_digits.put(6,0);
+        num_of_digits.put(7,0);
+        num_of_digits.put(8,0);
+        num_of_digits.put(9,0);
+        num_of_digits.put(10,0);
+        num_of_digits.put(11,0);
+        num_of_digits.put(12,0);
+        num_of_digits.put(13,0);
+        num_of_digits.put(14,0);
+        num_of_digits.put(15,0);
+        num_of_digits.put(16,0);
+        num_of_digits.put(17,0);
+        num_of_digits.put(18,0);
+        num_of_digits.put(19,0);
+        num_of_digits.put(20,0);
+        num_of_digits.put(21,0);
+        num_of_digits.put(22,0);
+        num_of_digits.put(23,0);
+        num_of_digits.put(24,0);
+        return num_of_digits;
+    }
 
 }
