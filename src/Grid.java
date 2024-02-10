@@ -96,8 +96,42 @@ public class Grid {
 
     public Map<Integer, Integer> permutationMap(String row,int num_zero) {
         Map<Integer, Integer> num_of_digits = mapBuild();
+
         //This needs to create a hash map with the number of times a digit can be created with the
         // Available values, I have a test, base my code to succeed in that test.
+        switch (num_zero){
+            case 0:
+                int val1 = Integer.parseInt(String.valueOf(row.charAt(0)));
+                int val2 = Integer.parseInt(String.valueOf(row.charAt(1)));
+                int val3 = Integer.parseInt(String.valueOf(row.charAt(2)));
+                num_of_digits.put(val1+val2+val3, num_of_digits.get(val1+val2+val3) + 1);
+                break;
+            case 1:
+                //Case when there is 1 zero, There are two constants
+                //You Iterate 1 digit through list of available digits and add it to the total
+
+                int[] constant_vals = new int[]{0,0};
+                int counter =0;
+                for(int j=0;j<row.length();j++){
+                    char digit = row.charAt(j);
+                    if(digit != '0'){
+                        constant_vals[counter] = Integer.parseInt(String.valueOf(digit));
+                        counter+=1;
+                    }
+                    }
+                for (int i = 0; i < this.available_digits.size(); i++) {
+                    int valTotal = Integer.parseInt(String.valueOf(this.available_digits.get(i))) + constant_vals[0] + constant_vals[1];
+                    num_of_digits.put(valTotal, num_of_digits.get(valTotal) + 1);
+                }
+                break;
+            case 2:
+                //Case when there are 2 zeroes, There is one constant
+                break;
+
+            case 3:
+                //Case when there are 3 zeroes, There are no constants
+                break;
+        }
 
         return num_of_digits;
     }

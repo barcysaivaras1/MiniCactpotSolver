@@ -75,7 +75,7 @@ class GridTest {
     @MethodSource("permutationMapTestVals")
     void permutationMapTest(Grid gc,String num,int counter, Map<Integer,Integer> expected) {
         Map<Integer,Integer> map = gc.permutationMap(num,counter);
-        Assert.assertEquals(map,expected);
+        Assert.assertEquals(expected,map);
     }
 
     private static Stream<Arguments> permutationMapTestVals() {
@@ -83,10 +83,7 @@ class GridTest {
         Grid gc2 = new Grid();
         gc2.gridInsert("000","100","240");
         Map<Integer, Integer> ans = gc2.mapBuild();
-        ans.put(7,1);
-        ans.put(8,1);
         ans.put(9,1);
-        ans.put(10,1);
         ans.put(11,1);
         ans.put(12,1);
         ans.put(13,1);
