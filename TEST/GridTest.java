@@ -73,8 +73,8 @@ class GridTest {
     @ParameterizedTest
     @DisplayName("Testing method that creates the number of possible permutations of each digit")
     @MethodSource("permutationMapTestVals")
-    void permutationMapTest(Grid gc,String num, Map<Integer,Integer> expected) {
-        Map<Integer,Integer> map = gc.permutationMap();
+    void permutationMapTest(Grid gc,String num,int counter, Map<Integer,Integer> expected) {
+        Map<Integer,Integer> map = gc.permutationMap(num,counter);
         Assert.assertEquals(map,expected);
     }
 
@@ -94,7 +94,7 @@ class GridTest {
         ans.put(15,1);
         return Stream.of(
                 //More Tests to be added
-                Arguments.of(gc2,"240",ans)
+                Arguments.of(gc2,"240",1,ans)
         );
     }
 }

@@ -94,14 +94,12 @@ public class Grid {
         return 0;
     }
 
-    public Map<Integer, Integer> permutationMap(){
+    public Map<Integer, Integer> permutationMap(String row,int num_zero) {
         Map<Integer, Integer> num_of_digits = mapBuild();
         //This needs to create a hash map with the number of times a digit can be created with the
-        // Available values, I have test, base my code to succeed in that test.
-
+        // Available values, I have a test, base my code to succeed in that test.
 
         return num_of_digits;
-
     }
 
     public Map<Integer,Integer> mapBuild(){
