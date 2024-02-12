@@ -89,6 +89,7 @@ public class Grid {
             }
         }
         //Need factorial method to calculate
+        //I think i might need to calculate combinations and not permutations. Requires more thinking.
         int permutations = Maths.factorial(this.available_digits.size()) / Maths.factorial(this.available_digits.size()-counter);
 
         return 0;
@@ -138,25 +139,9 @@ public class Grid {
 
     public Map<Integer,Integer> mapBuild(){
         Map<Integer, Integer> num_of_digits = new HashMap<Integer,Integer>();
-        num_of_digits.put(6,0);
-        num_of_digits.put(7,0);
-        num_of_digits.put(8,0);
-        num_of_digits.put(9,0);
-        num_of_digits.put(10,0);
-        num_of_digits.put(11,0);
-        num_of_digits.put(12,0);
-        num_of_digits.put(13,0);
-        num_of_digits.put(14,0);
-        num_of_digits.put(15,0);
-        num_of_digits.put(16,0);
-        num_of_digits.put(17,0);
-        num_of_digits.put(18,0);
-        num_of_digits.put(19,0);
-        num_of_digits.put(20,0);
-        num_of_digits.put(21,0);
-        num_of_digits.put(22,0);
-        num_of_digits.put(23,0);
-        num_of_digits.put(24,0);
+        for(int i=6;i<25;i++){
+            num_of_digits.put(i,0);
+        }
         return num_of_digits;
     }
 
