@@ -8,5 +8,7 @@ public class Maths {
         }
         return total;
     }
-
+    public static int TakesDigitsAndOutputsNumOfCombinations(int n,int r){
+        return factorial(n)/(factorial(n-r)*factorial(r));
+    }
 }

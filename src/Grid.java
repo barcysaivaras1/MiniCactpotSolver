@@ -90,8 +90,7 @@ public class Grid {
         }
         //Need factorial method to calculate
         //I think i might need to calculate combinations and not permutations. Requires more thinking.
-        int combinations = Maths.factorial(this.available_digits.size()) / Maths.factorial(this.available_digits.size()-counter)*Maths.factorial(counter);
-
+        int combinations = Maths.TakesDigitsAndOutputsNumOfCombinations(this.available_digits.size(),counter);
         return 0;
     }
 
