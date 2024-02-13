@@ -55,6 +55,9 @@ class GridTest {
         );
     }
 
+    //Maybe Remake this tests as this will only take a single row
+    //Into consideration when the whole grid is needed as they depend on the
+    //available digits which can wildly change the average of a score
     @ParameterizedTest
     @DisplayName("Testing if average score calculated correctly")
     @CsvSource({

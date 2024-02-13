@@ -91,10 +91,12 @@ public class Grid {
         //Need factorial method to calculate
         //I think i might need to calculate combinations and not permutations. Requires more thinking.
         int combinations = Maths.TakesDigitsAndOutputsNumOfCombinations(this.available_digits.size(),counter);
+        Map<Integer,Integer>
+        for(int i=0;i<)
         return 0;
     }
 
-    public Map<Integer, Integer> permutationMap(String row,int num_zero) {
+    public Map<Integer, Integer> CreatesAHashMapShowingWhatNumbersCanBeMadeWithTheRow(String row,int num_zero) {
         Map<Integer, Integer> num_of_digits = mapBuild();
         int counter = 0;
         //This needs to create a hash map with the number of times a digit can be created with the
