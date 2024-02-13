@@ -55,29 +55,39 @@ class GridTest {
         );
     }
 
-    //Maybe Remake this tests as this will only take a single row
-    //Into consideration when the whole grid is needed as they depend on the
-    //available digits which can wildly change the average of a score
     @ParameterizedTest
     @DisplayName("Testing if average score calculated correctly")
-    @CsvSource({
-            "001 , 528",
-            "146 , 252",
-            "000 , 332",
-            "312 , 10000",
-            "302 , 1761"
-    })
-    void ThisChecksIfTheCorrectAverageIsReturnedForEachRow(String line ,int expected) {
-        Grid gc = new Grid();
-        int avgScore = gc.rowAverage(line);
-        Assert.assertEquals(avgScore,expected);
+    @MethodSource("ChecksIfTheCorrectAverageIsReturnedForEachRowTests")
+    void ChecksIfTheCorrectAverageIsReturnedForEachRow(Grid gc,String row,int expected) {
+        Assert.assertEquals(expected,gc.rowAverage(row));
     }
+    private static Stream<Arguments> ChecksIfTheCorrectAverageIsReturnedForEachRowTests() {
+        Grid gc1 = new Grid();
+        Grid gc2 = new Grid();
+        Grid gc3 = new Grid();
+        Grid gc4 = new Grid();
+        Grid gc5 = new Grid();
+        gc1.gridInsert("000","000","001");
+        gc2.gridInsert("000","000","146");
+        gc3.gridInsert("000","012","000");
+        gc4.gridInsert("000","000","312");
+        gc5.gridInsert("000","000","302");
+
+        return Stream.of(
+                Arguments.of(gc1,"001",528),
+                Arguments.of(gc2,"146",252),
+                Arguments.of(gc3,"000",363),
+                Arguments.of(gc4,"312",10000),
+                Arguments.of(gc2,"302",1560)
+        );
+    }
+
 
     @ParameterizedTest
     @DisplayName("Testing method that creates the number of possible combinations of each digit")
     @MethodSource("ChecksIfTheCorrectHashMapIsReturnedToCalculateAverageTest")
     void ChecksIfTheCorrectHashMapIsReturnedToCalculateAverage(Grid gc,String num,int counter, Map<Integer,Integer> expected) {
-        Map<Integer,Integer> map = gc.permutationMap(num,counter);
+        Map<Integer,Integer> map = gc.CreatesAHashMapShowingWhatNumbersCanBeMadeWithTheRow(num,counter);
         Assert.assertEquals(expected,map);
     }
 

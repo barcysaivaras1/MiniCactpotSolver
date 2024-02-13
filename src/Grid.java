@@ -91,8 +91,7 @@ public class Grid {
         //Need factorial method to calculate
         //I think i might need to calculate combinations and not permutations. Requires more thinking.
         int combinations = Maths.TakesDigitsAndOutputsNumOfCombinations(this.available_digits.size(),counter);
-        Map<Integer,Integer>
-        for(int i=0;i<)
+        Map<Integer,Integer> SCORE_MAP = CreatesAHashMapShowingWhatNumbersCanBeMadeWithTheRow(row,counter);
         return 0;
     }
 
