@@ -37,14 +37,14 @@ class GridTest {
 
     @ParameterizedTest
     @DisplayName("Checks if there are duplicate digits between rows and in rows")
-    @MethodSource("duplicateCheckTestVals")
-    void duplicateCheck(String row1, String row2, String row3,boolean expected) {
+    @MethodSource("ChecksIfThereAreAnyDuplicateNumbersWithinEachRowTests")
+    void ChecksIfThereAreAnyDuplicateNumbersWithinEachRow(String row1, String row2, String row3,boolean expected) {
         Grid gc = new Grid();
         boolean duplicate = gc.duplicateCheck(row1,row2,row3);
         Assert.assertTrue(expected == duplicate);
     }
 
-    private static Stream<Arguments> duplicateCheckTestVals() {
+    private static Stream<Arguments> ChecksIfThereAreAnyDuplicateNumbersWithinEachRowTests() {
         return Stream.of(
                 //True means there are duplicates within the rows
                 Arguments.of("100","002","002",true),
@@ -81,17 +81,31 @@ class GridTest {
     private static Stream<Arguments> permutationMapTestVals() {
         Grid gc1 = new Grid();
         Grid gc2 = new Grid();
+        Grid gc3 = new Grid();
+        Grid gc4 = new Grid();
+        gc1.gridInsert("269","000","430");
         gc2.gridInsert("000","100","240");
-        Map<Integer, Integer> ans = gc2.mapBuild();
-        ans.put(9,1);
-        ans.put(11,1);
-        ans.put(12,1);
-        ans.put(13,1);
-        ans.put(14,1);
-        ans.put(15,1);
+        gc3.gridInsert("678","135","200");
+        gc4.gridInsert("678","135","000");
+        Map<Integer, Integer> ans1 = gc2.mapBuild();
+        Map<Integer, Integer> ans2 = gc1.mapBuild();
+        Map<Integer, Integer> ans3 = gc4.mapBuild();
+        Map<Integer, Integer> ans4 = gc3.mapBuild();
+        ans1.put(9,1);
+        ans1.put(11,1);
+        ans1.put(12,1);
+        ans1.put(13,1);
+        ans1.put(14,1);
+        ans1.put(15,1);
+        ans2.put(17,1);
+        ans3.put(15,1);
+        ans4.put(15,1);
         return Stream.of(
                 //More Tests to be added
-                Arguments.of(gc2,"240",1,ans)
+                Arguments.of(gc2,"240",1,ans1),
+                Arguments.of(gc1,"269",0,ans2),
+                Arguments.of(gc4,"000",3,ans3),
+                Arguments.of(gc3,"200",2,ans4)
         );
     }
 }
