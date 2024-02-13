@@ -13,14 +13,14 @@ import java.util.stream.Stream;
 class GridTest {
     @ParameterizedTest
     @DisplayName("Checks if a valid grid is stored. Invalid Grids are denied")
-    @MethodSource("gridInsertTestVals")
-    void gridInsert(String row1, String row2, String row3,String[] expected) {
+    @MethodSource("ChecksIfTheValuesGivenAsParametersAreStoredInTheArrayGridCorrectlyTests")
+    void ChecksIfTheValuesGivenAsParametersAreStoredInTheArrayGridCorrectly(String row1, String row2, String row3,String[] expected) {
         Grid gc = new Grid();
         gc.gridInsert(row1,row2,row3);
         System.out.println(gc.grid);
         Assert.assertArrayEquals(expected,gc.grid);
     }
-    private static Stream<Arguments> gridInsertTestVals(){
+    private static Stream<Arguments> ChecksIfTheValuesGivenAsParametersAreStoredInTheArrayGridCorrectlyTests(){
         return Stream.of(
                 //TESTS SHOULD BE SUCCESSFUL WITH VALID INPUT
                         Arguments.of("100","002","004",new String[]{"100","002","004"}),
@@ -64,21 +64,21 @@ class GridTest {
             "312 , 10000",
             "302 , 1761"
     })
-    void rowAverageTest(String line ,int expected) {
+    void ThisChecksIfTheCorrectAverageIsReturnedForEachRow(String line ,int expected) {
         Grid gc = new Grid();
         int avgScore = gc.rowAverage(line);
         Assert.assertEquals(avgScore,expected);
     }
 
     @ParameterizedTest
-    @DisplayName("Testing method that creates the number of possible permutations of each digit")
-    @MethodSource("permutationMapTestVals")
-    void permutationMapTest(Grid gc,String num,int counter, Map<Integer,Integer> expected) {
+    @DisplayName("Testing method that creates the number of possible combinations of each digit")
+    @MethodSource("ChecksIfTheCorrectHashMapIsReturnedToCalculateAverageTest")
+    void ChecksIfTheCorrectHashMapIsReturnedToCalculateAverage(Grid gc,String num,int counter, Map<Integer,Integer> expected) {
         Map<Integer,Integer> map = gc.permutationMap(num,counter);
         Assert.assertEquals(expected,map);
     }
 
-    private static Stream<Arguments> permutationMapTestVals() {
+    private static Stream<Arguments> ChecksIfTheCorrectHashMapIsReturnedToCalculateAverageTest() {
         Grid gc1 = new Grid();
         Grid gc2 = new Grid();
         Grid gc3 = new Grid();

@@ -90,14 +90,14 @@ public class Grid {
         }
         //Need factorial method to calculate
         //I think i might need to calculate combinations and not permutations. Requires more thinking.
-        int permutations = Maths.factorial(this.available_digits.size()) / Maths.factorial(this.available_digits.size()-counter);
+        int combinations = Maths.factorial(this.available_digits.size()) / Maths.factorial(this.available_digits.size()-counter)*Maths.factorial(counter);
 
         return 0;
     }
 
     public Map<Integer, Integer> permutationMap(String row,int num_zero) {
         Map<Integer, Integer> num_of_digits = mapBuild();
-
+        int counter = 0;
         //This needs to create a hash map with the number of times a digit can be created with the
         // Available values, I have a test, base my code to succeed in that test.
         switch (num_zero){
@@ -112,25 +112,49 @@ public class Grid {
                 //You Iterate 1 digit through list of available digits and add it to the total
 
                 int[] constant_vals = new int[]{0,0};
-                int counter =0;
                 for(int j=0;j<row.length();j++){
                     char digit = row.charAt(j);
                     if(digit != '0'){
                         constant_vals[counter] = Integer.parseInt(String.valueOf(digit));
                         counter+=1;
                     }
-                    }
+                }
                 for (int i = 0; i < this.available_digits.size(); i++) {
                     int valTotal = Integer.parseInt(String.valueOf(this.available_digits.get(i))) + constant_vals[0] + constant_vals[1];
                     num_of_digits.put(valTotal, num_of_digits.get(valTotal) + 1);
                 }
                 break;
-            case 2:
-                //Case when there are 2 zeroes, There is one constant
+            case 2://Case when there are 2 zeroes, There is one constant
+
+                int NON_ZERO_DIGITS_IN_ROW=0;
+                for(int j=0;j<row.length();j++){
+                    char digit = row.charAt(j);
+                    if(digit != '0'){
+                        NON_ZERO_DIGITS_IN_ROW = Integer.parseInt(String.valueOf(digit));
+                        counter+=1;
+                    }
+                }
+
+                for(int i=0;i<this.available_digits.size()-1; i++){
+                    //We do j=i+1 because we do not want combinations that have occurred already or any duplicates to be considered
+                    for(int j=i+1;j<this.available_digits.size();j++){
+                        int SUM_OF_DIGITS_IN_ROW = Integer.parseInt(String.valueOf(this.available_digits.get(i))) + Integer.parseInt(String.valueOf(this.available_digits.get(j))) + NON_ZERO_DIGITS_IN_ROW;
+                        num_of_digits.put(SUM_OF_DIGITS_IN_ROW,num_of_digits.get(SUM_OF_DIGITS_IN_ROW)+1);
+                    }
+                }
                 break;
 
             case 3:
                 //Case when there are 3 zeroes, There are no constants
+                for(int i=0;i<this.available_digits.size()-2; i++){
+                    //We do j=i+1 because we do not want combinations that have occurred already or any duplicates to be considered
+                    for(int j=i+1;j<this.available_digits.size()-1;j++){
+                        for(int k=j+1;k<this.available_digits.size();k++) {
+                            int SUM_OF_DIGITS_IN_ROW = Integer.parseInt(String.valueOf(this.available_digits.get(i))) + Integer.parseInt(String.valueOf(this.available_digits.get(j))) + Integer.parseInt(String.valueOf(this.available_digits.get(k)));
+                            num_of_digits.put(SUM_OF_DIGITS_IN_ROW, num_of_digits.get(SUM_OF_DIGITS_IN_ROW) + 1);
+                        }
+                    }
+                }
                 break;
         }
 

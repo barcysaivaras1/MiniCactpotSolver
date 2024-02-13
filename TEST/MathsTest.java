@@ -19,4 +19,14 @@ class MathsTest {
         int ans = Maths.factorial(n);
         Assert.assertEquals(ans,expected);
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "4,2,6",
+            "12,4,495",
+            "1,0,1"
+    })
+    void ChecksIfCorrectCombinationsIsReturned(int n,int r,int expected) {
+        assertEquals(expected,Maths.TakesDigitsAndOutputsNumOfCombinations(n,r));
+    }
 }
