@@ -101,7 +101,7 @@ public class Grid {
     }
 
     public Map<Integer, Integer> CreatesAHashMapShowingWhatNumbersCanBeMadeWithTheRow(String row,int num_zero) {
-        Map<Integer, Integer> num_of_digits = mapBuild();
+        Map<Integer, Integer> num_of_digits = ThisBuildsAMapForCalculatingTheAverageScore();
         int counter = 0;
         //This needs to create a hash map with the number of times a digit can be created with the
         // Available values, I have a test, base my code to succeed in that test.
@@ -166,12 +166,19 @@ public class Grid {
         return num_of_digits;
     }
 
-    public Map<Integer,Integer> mapBuild(){
+    public Map<Integer,Integer> ThisBuildsAMapForCalculatingTheAverageScore(){
         Map<Integer, Integer> num_of_digits = new HashMap<Integer,Integer>();
         for(int i=6;i<25;i++){
             num_of_digits.put(i,0);
         }
         return num_of_digits;
     }
-
+    public Map<String,Integer> BuildsAMapForStoringTheAverageScoreOfEachLineInTheGrid(){
+        Map<String, Integer> AVERAGE_SCORE_FOR_EACH_LINE = new HashMap<String,Integer>();
+        String[] LINES_IN_THE_GRID = new String[]{"Row1","Row2","Row3","Column1","Column2","Column3","Diagonal1","Diagonal2"};
+        for(int i=0;i<LINES_IN_THE_GRID.length;i++){
+            AVERAGE_SCORE_FOR_EACH_LINE.put(LINES_IN_THE_GRID[i],0);
+        }
+        return AVERAGE_SCORE_FOR_EACH_LINE;
+    }
 }
