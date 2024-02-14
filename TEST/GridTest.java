@@ -78,7 +78,7 @@ class GridTest {
                 Arguments.of(gc2,"146",252),
                 Arguments.of(gc3,"000",363),
                 Arguments.of(gc4,"312",10000),
-                Arguments.of(gc2,"302",1560)
+                Arguments.of(gc5,"302",1560)
         );
     }
 

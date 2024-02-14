@@ -3,9 +3,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PossibleScores {
-    private Map<Integer, Integer> possible_scores = new HashMap<Integer,Integer>();
+    public Map<Integer, Integer> possible_scores = new HashMap<Integer,Integer>();
 
-    private PossibleScores(){
+    PossibleScores(){
         possible_scores.put(6,10000);
         possible_scores.put(7,36);
         possible_scores.put(8,720);

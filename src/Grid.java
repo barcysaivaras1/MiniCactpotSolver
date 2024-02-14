@@ -75,8 +75,6 @@ public class Grid {
     }
 
     public int rowAverage(String row){
-        int int_row = Integer.parseInt(row);
-        int total = 0;
         // NOTE TO SELF
         // You to calculate the number of possible permutations with no replacements of digits
         // You need to be able to carry out the score of every possible permutation and add it to the total
@@ -92,7 +90,14 @@ public class Grid {
         //I think i might need to calculate combinations and not permutations. Requires more thinking.
         int combinations = Maths.TakesDigitsAndOutputsNumOfCombinations(this.available_digits.size(),counter);
         Map<Integer,Integer> SCORE_MAP = CreatesAHashMapShowingWhatNumbersCanBeMadeWithTheRow(row,counter);
-        return 0;
+        //Loop starts from six because hashmap keys go from 6-24
+        int TOTAL_POSSIBLE_SCORE = 0;
+        PossibleScores ps = new PossibleScores();
+        for(int i=6;i<SCORE_MAP.size()+6;i++){
+            int score = ps.possible_scores.get(i);
+            TOTAL_POSSIBLE_SCORE = TOTAL_POSSIBLE_SCORE+(score*SCORE_MAP.get(i));
+        }
+        return TOTAL_POSSIBLE_SCORE/combinations;
     }
 
     public Map<Integer, Integer> CreatesAHashMapShowingWhatNumbersCanBeMadeWithTheRow(String row,int num_zero) {
