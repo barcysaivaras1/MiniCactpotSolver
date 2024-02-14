@@ -181,4 +181,40 @@ public class Grid {
         }
         return AVERAGE_SCORE_FOR_EACH_LINE;
     }
+
+    public Map<String, Integer> MapsTheAverageScoreForEachLine() {
+        Map<String, Integer> AVERAGE_SCORE_FOR_EACH_LINE = BuildsAMapForStoringTheAverageScoreOfEachLineInTheGrid();
+        //Inserting Average Score for Each Row
+        AVERAGE_SCORE_FOR_EACH_LINE.put("Row1",rowAverage(this.grid[0]));
+        AVERAGE_SCORE_FOR_EACH_LINE.put("Row2",rowAverage(this.grid[1]));
+        AVERAGE_SCORE_FOR_EACH_LINE.put("Row3",rowAverage(this.grid[2]));
+
+        //Creates an array to hold the columns
+        String[] columns = new String[]{"","",""};
+        for(int i=0;i<grid.length;i++){
+            for(int j=0;j<grid[i].length();j++){
+                char digit = grid[j].charAt(i);
+                columns[i] = columns[i]+digit;
+            }
+        }
+        //Inserting Average Score for Each Column
+        AVERAGE_SCORE_FOR_EACH_LINE.put("Column1",rowAverage(columns[0]));
+        AVERAGE_SCORE_FOR_EACH_LINE.put("Column2",rowAverage(columns[1]));
+        AVERAGE_SCORE_FOR_EACH_LINE.put("Column3",rowAverage(columns[2]));
+
+
+        String[] diagonals = new String[]{"",""};
+        for(int i=0;i<grid.length;i++){
+            char digit1 = grid[i].charAt(i);
+            char digit2 = grid[i].charAt(grid[i].length()-(i+1));
+            diagonals[0] = diagonals[0] + digit1;
+            diagonals[1] = diagonals[1] + digit2;
+        }
+
+        //Inserting Average Score for each Diagonal
+        AVERAGE_SCORE_FOR_EACH_LINE.put("Diagonal1",rowAverage(diagonals[0]));
+        AVERAGE_SCORE_FOR_EACH_LINE.put("Diagonal2",rowAverage(diagonals[1]));
+
+        return AVERAGE_SCORE_FOR_EACH_LINE;
+    }
 }

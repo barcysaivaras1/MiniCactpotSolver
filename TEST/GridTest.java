@@ -11,17 +11,6 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 class GridTest {
-    Grid gc1 = new Grid();
-    Grid gc2 = new Grid();
-    Grid gc3 = new Grid();
-    Grid gc4 = new Grid();
-    Grid gc5 = new Grid();
-
-
-
-
-
-
     @ParameterizedTest
     @DisplayName("Checks if a valid grid is stored. Invalid Grids are denied")
     @MethodSource("ChecksIfTheValuesGivenAsParametersAreStoredInTheArrayGridCorrectlyTests")
@@ -78,18 +67,22 @@ class GridTest {
         Grid gc3 = new Grid();
         Grid gc4 = new Grid();
         Grid gc5 = new Grid();
+        Grid gc6 = new Grid();
+
         gc1.gridInsert("000","000","001");
         gc2.gridInsert("000","000","146");
         gc3.gridInsert("000","012","000");
         gc4.gridInsert("000","000","312");
         gc5.gridInsert("000","000","302");
+        gc6.gridInsert("000","100","240");
 
         return Stream.of(
                 Arguments.of(gc1,"001",528),
                 Arguments.of(gc2,"146",252),
                 Arguments.of(gc3,"000",363),
                 Arguments.of(gc4,"312",10000),
-                Arguments.of(gc5,"302",1560)
+                Arguments.of(gc5,"302",1560),
+                Arguments.of(gc6,"012",1920)
         );
     }
 
