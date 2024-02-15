@@ -15,6 +15,7 @@ public class Grid {
         if (row1.length() == 3 && row2.length() == 3 && row3.length() == 3){
             if(numCheck(row1,row2,row3) && !(this.duplicateCheck(row1,row2,row3))){
                 this.grid = new String[]{row1, row2, row3};
+                System.out.println("Grid Inserted");
                 return;
             }
         }
