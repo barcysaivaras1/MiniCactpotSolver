@@ -1,4 +1,5 @@
-This entire program is essentially used to help you get the highest score possible for a mini game in a video game called final fantasy 14;
+Project contains two users, both are me, Personal and Student accounts;
+         This entire program is essentially used to help you get the highest score possible for a mini game in a video game called final fantasy 14;
 The game consists of a 3x3 grid where initially you are revealed 1 digit;
 You are able to reveal 3 more digits;
 A line is a row,column or diagonal;
