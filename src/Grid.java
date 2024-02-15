@@ -76,10 +76,7 @@ public class Grid {
     }
 
     public int rowAverage(String row){
-        // NOTE TO SELF
-        // You to calculate the number of possible permutations with no replacements of digits
-        // You need to be able to carry out the score of every possible permutation and add it to the total
-        // Total needs to be divided by the number of permutations
+        //This loop finds the number of zeroes present in a row
         int counter = 0;
         for(int i=0;i<row.length();i++){
             char digit = row.charAt(i);
@@ -87,27 +84,28 @@ public class Grid {
                 counter+=1;
             }
         }
-        //Need factorial method to calculate
-        //I think i might need to calculate combinations and not permutations. Requires more thinking.
+        //Calculates the number of combinations
         int combinations = Maths.TakesDigitsAndOutputsNumOfCombinations(this.available_digits.size(),counter);
         Map<Integer,Integer> SCORE_MAP = CreatesAHashMapShowingWhatNumbersCanBeMadeWithTheRow(row,counter);
         //Loop starts from six because hashmap keys go from 6-24
         int TOTAL_POSSIBLE_SCORE = 0;
         PossibleScores ps = new PossibleScores();
+        //Finds the total score
         for(int i=6;i<SCORE_MAP.size()+6;i++){
             int score = ps.possible_scores.get(i);
             TOTAL_POSSIBLE_SCORE = TOTAL_POSSIBLE_SCORE+(score*SCORE_MAP.get(i));
         }
+        //Returns the mean
         return TOTAL_POSSIBLE_SCORE/combinations;
     }
 
     public Map<Integer, Integer> CreatesAHashMapShowingWhatNumbersCanBeMadeWithTheRow(String row,int num_zero) {
         Map<Integer, Integer> num_of_digits = ThisBuildsAMapForCalculatingTheAverageScore();
         int counter = 0;
-        //This needs to create a hash map with the number of times a digit can be created with the
-        // Available values, I have a test, base my code to succeed in that test.
+        //Based on the number of zeroes, the method will have a to treat the row differently
         switch (num_zero){
             case 0:
+                //Returns the sum of digits
                 int val1 = Integer.parseInt(String.valueOf(row.charAt(0)));
                 int val2 = Integer.parseInt(String.valueOf(row.charAt(1)));
                 int val3 = Integer.parseInt(String.valueOf(row.charAt(2)));
@@ -118,6 +116,7 @@ public class Grid {
                 //You Iterate 1 digit through list of available digits and add it to the total
 
                 int[] constant_vals = new int[]{0,0};
+                //This finds the non-zero values in the row
                 for(int j=0;j<row.length();j++){
                     char digit = row.charAt(j);
                     if(digit != '0'){
@@ -133,6 +132,7 @@ public class Grid {
             case 2://Case when there are 2 zeroes, There is one constant
 
                 int NON_ZERO_DIGITS_IN_ROW=0;
+                //This finds the one constant in the row
                 for(int j=0;j<row.length();j++){
                     char digit = row.charAt(j);
                     if(digit != '0'){
@@ -155,6 +155,7 @@ public class Grid {
                 for(int i=0;i<this.available_digits.size()-2; i++){
                     //We do j=i+1 because we do not want combinations that have occurred already or any duplicates to be considered
                     for(int j=i+1;j<this.available_digits.size()-1;j++){
+                        //We do k=j+1 because we do not want combinations that have occurred already or any duplicates to be considered
                         for(int k=j+1;k<this.available_digits.size();k++) {
                             int SUM_OF_DIGITS_IN_ROW = Integer.parseInt(String.valueOf(this.available_digits.get(i))) + Integer.parseInt(String.valueOf(this.available_digits.get(j))) + Integer.parseInt(String.valueOf(this.available_digits.get(k)));
                             num_of_digits.put(SUM_OF_DIGITS_IN_ROW, num_of_digits.get(SUM_OF_DIGITS_IN_ROW) + 1);
@@ -168,6 +169,7 @@ public class Grid {
     }
 
     public Map<Integer,Integer> ThisBuildsAMapForCalculatingTheAverageScore(){
+        //This creates the skeleton of the hashmap that will have its values updated for working out the average
         Map<Integer, Integer> num_of_digits = new HashMap<Integer,Integer>();
         for(int i=6;i<25;i++){
             num_of_digits.put(i,0);
@@ -175,6 +177,7 @@ public class Grid {
         return num_of_digits;
     }
     public Map<String,Integer> BuildsAMapForStoringTheAverageScoreOfEachLineInTheGrid(){
+        //This creates the skeleton for the hashmap that holds every possible position in the grid, average scores will be assigned to each position
         Map<String, Integer> AVERAGE_SCORE_FOR_EACH_LINE = new HashMap<String,Integer>();
         String[] LINES_IN_THE_GRID = new String[]{"Row1","Row2","Row3","Column1","Column2","Column3","Diagonal1","Diagonal2"};
         for(int i=0;i<LINES_IN_THE_GRID.length;i++){
@@ -184,6 +187,7 @@ public class Grid {
     }
 
     public Map<String, Integer> MapsTheAverageScoreForEachLine() {
+        //Assigns the value average score to each position of the grid
         Map<String, Integer> AVERAGE_SCORE_FOR_EACH_LINE = BuildsAMapForStoringTheAverageScoreOfEachLineInTheGrid();
         //Inserting Average Score for Each Row
         AVERAGE_SCORE_FOR_EACH_LINE.put("Row1",rowAverage(this.grid[0]));

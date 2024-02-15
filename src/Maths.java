@@ -10,6 +10,7 @@ public class Maths {
         }
         return total;
     }
+    //This works out the number of combinations using the equation for combinations with replacement
     public static int TakesDigitsAndOutputsNumOfCombinations(int n,int r){
         return factorial(n)/(factorial(n-r)*factorial(r));
     }

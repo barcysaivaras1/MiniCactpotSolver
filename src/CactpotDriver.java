@@ -3,6 +3,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class CactpotDriver {
+    //This provides a more user-friendly  way of interacting with the program
     public static void main(String[] args) {
         //PRINT OUTPUT (ENTRY MESSAGE)
         System.out.println("Welcome to the Mini Cactpot Solver");

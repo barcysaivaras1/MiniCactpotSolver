@@ -5,6 +5,7 @@ import java.util.Map;
 public class PossibleScores {
     public Map<Integer, Integer> possible_scores = new HashMap<Integer,Integer>();
 
+    //This is a constant value that will be checked to see how much each sum of digits is worth.
     PossibleScores(){
         possible_scores.put(6,10000);
         possible_scores.put(7,36);
