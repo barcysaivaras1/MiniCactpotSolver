@@ -9,6 +9,10 @@ The game consists of a 3x3 grid where initially you are revealed 1 digit
 
 You are able to reveal 3 more digits
 
+This is what the grid looks like when it is first opened
+
+![Alt Text](https://static.icy-veins.com/images/ffxiv/gs-mini-cactpot.jpg)
+
 A LINE of DIGITS is equal to a sum and that sum is awarded a certain amount of points
 
 A line is a row,column or diagonal
