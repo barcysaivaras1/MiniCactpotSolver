@@ -1,13 +1,26 @@
+# Mini Cactpot Solver
+
 Project contains two users, both are me, Personal and Student accounts;
+
 This is a personal project that i have decided to work on to practice my Test Driven Development Skills
 
-This entire program is essentially used to help you get the highest score possible for a mini game in a video game called final fantasy 14;
-The game consists of a 3x3 grid where initially you are revealed 1 digit;
-You are able to reveal 3 more digits;
-A line is a row,column or diagonal;
-A line consists of 3 digits, the sum of these digits is equal to a specific score;
-You can pick 1 line to get a score;
-A line can consist of unknown digits;
-My program tells the user where they should reveal their next digit based on average values;
-Once they have revealed the maximum amount of digits, my program will tell the user which "line" will give them the highest score;
-This proposed "line" can consist of unknowns. This is because on average you will receive a higher score than a known line.;
+## Game Explanation
+The game consists of a 3x3 grid where initially you are revealed 1 digit
+
+You are able to reveal 3 more digits
+
+A LINE of DIGITS is equal to a sum and that sum is awarded a certain amount of points
+
+A line is a row,column or diagonal
+
+You can pick 1 line to get a score 
+
+You can pick a line with unknown digits which will be revealed on locking in your choice
+
+
+
+## Purpose of program
+
+The purpose of the program is to, ON AVERAGE, get you the highest score possible on the minigame so that you can consistently get higher scores to improve your rewards
+
+Currently the program does not have any GUI, HOWEVER, i may add this in the future
