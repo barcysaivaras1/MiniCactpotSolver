@@ -17,7 +17,7 @@ You can pick 1 line to get a score
 
 You can pick a line with unknown digits which will be revealed on locking in your choice
 
-
+![Alt Text](https://i.redd.it/a66he3fwymz21.png)
 
 ## Purpose of program
 
